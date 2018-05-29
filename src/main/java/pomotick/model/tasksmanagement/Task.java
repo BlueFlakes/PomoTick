@@ -1,7 +1,7 @@
 package pomotick.model.tasksmanagement;
 
 import org.hibernate.annotations.CreationTimestamp;
-import pomotick.utils.LocalDateTimeAttributeConverter;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
