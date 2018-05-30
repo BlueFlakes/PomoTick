@@ -15,8 +15,7 @@ public class UserProfile {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    private String firstName;
-    private String lastName;
+    private String profileName;
 
     @OneToMany(mappedBy = "userProfile")
     private List<Routine> routines = new LinkedList<>();
@@ -34,20 +33,12 @@ public class UserProfile {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getProfileName() {
+        return profileName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 
     public List<Routine> getRoutines() {
