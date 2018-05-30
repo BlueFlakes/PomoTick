@@ -1,5 +1,6 @@
 package pomotick.model.tasksmanagement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import pomotick.model.routine.Routine;
 
 import javax.persistence.*;
@@ -13,9 +14,11 @@ public class PomoTick {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Task task;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Routine routine;
 

@@ -1,10 +1,15 @@
 package pomotick.model.tasksmanagement;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +22,16 @@ public class Task {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
+    private String name;
+
     @OneToMany(mappedBy = "task")
     private List<PomoTick> pomoTicks = new ArrayList<>();
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private TasksStorage tasksStorage;
 
-//    @Column(updatable = false, nullable = false)
-//    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    @Column(updatable = false, nullable = false)
     @CreationTimestamp
     private LocalDateTime createDateTime;
 
@@ -73,5 +80,12 @@ public class Task {
         this.createDateTime = createDateTime;
     }
 
-    //endregion
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+//endregion
 }

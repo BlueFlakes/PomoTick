@@ -1,5 +1,6 @@
 package pomotick.model.routine;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import pomotick.model.UserProfile;
 import pomotick.model.tasksmanagement.PomoTick;
 
@@ -19,6 +20,7 @@ public class Routine {
     @OneToMany(mappedBy = "routine")
     private List<Cycle> cycles = new LinkedList<>();
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private UserProfile userProfile;
 

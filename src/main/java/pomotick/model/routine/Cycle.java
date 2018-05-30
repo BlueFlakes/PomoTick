@@ -1,5 +1,7 @@
 package pomotick.model.routine;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Cycle {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private Routine routine;
 

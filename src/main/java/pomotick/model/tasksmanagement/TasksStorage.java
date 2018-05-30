@@ -1,5 +1,6 @@
 package pomotick.model.tasksmanagement;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import pomotick.model.UserProfile;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class TasksStorage {
     @OneToMany(mappedBy = "tasksStorage")
     private List<Task> tasks = new LinkedList<>();
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     private UserProfile userProfile;
 
